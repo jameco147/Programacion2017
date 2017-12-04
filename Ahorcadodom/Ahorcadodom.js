@@ -56,13 +56,14 @@ function comprobar(){
 if(cntFallos.value>=5)
 {
   resultado.value="Has perdido";
-  
+
 
 }
 
 if((ahorcado.value == generada))
 {
   resultado.value="CORRECTO";
+  boton=document.getElementById("button").disabled=true;
 
 }
 }
