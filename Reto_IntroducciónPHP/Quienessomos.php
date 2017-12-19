@@ -56,7 +56,7 @@
       <ul>
         <li><a class="<?php if($pagina=="Quienes somos") echo "active";?>" href="./Quienessomos.php">Quienes somos</a></li>
         <li><a class="<?php if($pagina=="Precio") echo "active";?>" href="./Precios.php">Precios</a></li>
-        <li><a class="<?php if($pagina=="Contacto") echo "active";?>" href="./Contacto.php">Contact</a></li>
+        <li><a class="<?php if($pagina=="Contacto") echo "active";?>" href="./Contacto.php">Contacto</a></li>
         <li><a class="<?php if($pagina=="Index") echo "active";?>" href="./Index.php">Indice</a></li>
       </ul>
 
