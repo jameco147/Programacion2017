@@ -11,26 +11,32 @@ function espaciosVacios(){
   console.log(nombre.length);
   if (nombre.length == 0) {
     alert ("Error,  rellena el campo nombre");
+    return false;
   }
 
   if (apellidos.length == 0) {
     alert ("Error, rellena el campo apellidos");
+    return false;
   }
 
   if (edad.length == 0) {
     alert ("Error, rellena el campo edad");
+    return false;
   }
 
   if (curso.length == 0) {
     alert ("Error, rellena el campo curso");
+    return false;
   }
 
   if (puntos.length == 0) {
     alert ("Error, rellena el campo puntos");
+    return false;
   }
 
   if (correo.length == 0) {
     alert ("Error, rellena el campo correo");
+    return false;
 
   }
 

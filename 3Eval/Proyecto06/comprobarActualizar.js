@@ -10,27 +10,31 @@ var correo = document.getElementById('nuevocorreo').value;
 
   if (nombre.length == 0) {
     alert ("Error,  rellena el campo nombre");
+    return false;
   }
 
   if (apellido.length == 0) {
     alert ("Error, rellena el campo apellidos");
+    return false;
   }
 
   if (edad.length == 0) {
     alert ("Error, rellena el campo edad");
+    return false;
   }
 
   if (curso.length == 0) {
     alert ("Error, rellena el campo curso");
+    return false;
   }
 
   if (puntuacion.length == 0) {
     alert ("Error, rellena el campo puntuacion");
+    return false;
   }
 
   if (correo.length == 0) {
     alert ("Error, rellena el campo correo");
-
+    return false;
   }
-
 }
