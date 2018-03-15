@@ -19,7 +19,7 @@
         <input type="email" name="email" id="correo" placeholder="E-mail:">
         <input type="submit" name="submit" value="Resgistrarse">
       </form>
-      <script src="comprobarInsertar.js" charset="utf-8"></script>
+      <script src="js/comprobarInsertar.js" charset="utf-8"></script>
     </div>
   </body>
 </html>

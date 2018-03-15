@@ -52,7 +52,6 @@ $consulta = new Consulta();
         $consulta->borrar();
 
         }
-
       ?>
 
     <div class="wrap">
@@ -61,9 +60,9 @@ $consulta = new Consulta();
           <select>
             <option value="">Selecciona un usuario</option>
             <?php
-              $seleccion = $consulta->getUsuarios();
-              foreach ($seleccion as $fila) { ?>
-            <option value="<?=$fila['nombre'] ?>"><?php echo $fila['nombre']." ". $fila['apellidos']." ".$fila['correo']; ?></option><?php } ?>
+                $seleccion = $consulta->getUsuarios();
+                foreach ($seleccion as $fila) { ?>
+              <option value="<?=$fila['nombre'] ?>"><?php echo $fila['nombre']." ". $fila['apellidos']." ".$fila['correo']; ?></option><?php } ?>
           </select>
           <input type="submit" value="PLAY!">
         </p>

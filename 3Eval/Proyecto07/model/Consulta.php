@@ -79,12 +79,12 @@ class Consulta
       }
   }
 
-
   public function getUsuarios()
   {
       $cons = $this->conector->query("SELECT nombre,apellidos,correo FROM usuarios");
       return $cons;
   }
+
 
 
 }
