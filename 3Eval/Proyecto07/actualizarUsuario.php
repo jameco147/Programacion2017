@@ -1,3 +1,6 @@
+<?php
+include "model/Consulta.php";
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -20,8 +23,8 @@
         <select name="actu">
           <option value="">Selecciona un usuario</option>
           <?php
-            $conexion = new mysqli("localhost", "root", "", "juegos");
-            $seleccion = $conexion->query("SELECT nombre FROM usuarios");
+            $consulta = new Consulta();
+            $seleccion = $consulta->getUsuarios();
             foreach ($seleccion as $fila) { ?>
           <option value="<?=$fila['nombre'] ?>"><?php echo $fila['nombre']; ?></option><?php
         }
@@ -37,7 +40,7 @@
          <input type="email" name="newemail" id="nuevocorreo" placeholder="E-mail:">
          <input type="submit" name="actualizar" value="Actualizar datos">
     </form>
-      <script src="comprobarActualizar.js" charset="utf-8"></script>
+      <script src="js/comprobarActualizar.js" charset="utf-8"></script>
    </div>
 
 
