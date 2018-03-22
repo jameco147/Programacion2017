@@ -19,7 +19,7 @@ include "model/Consulta.php";
 
     <p>Actualizar usuario</p>
     <div class="wrap">
-      <form action="listadoUsuarios.php" method="post" onsubmit="return actualizarblanco()">
+      <form action="listadoUsuarios.php" method="post" onsubmit="return espaciosVacios()">
         <select name="actu">
           <option value="">Selecciona un usuario</option>
           <?php
@@ -32,15 +32,15 @@ include "model/Consulta.php";
         </select>
         <br>
         <br>
-         <input type="text" name="newusername" id="nuevonombre" placeholder="Nombre:">
-         <input type="text" name="newuserlastname" id="nuevoapellido" placeholder="Apellidos:">
-         <input type="number" name="newage" id="nuevoedad" placeholder="Edad:">
-         <input type="number" name="newcourse" id="nuevocurso" placeholder="Curso:">
-         <input type="number" name="newscore" id="nuevopunt" placeholder="Puntuación:">
-         <input type="email" name="newemail" id="nuevocorreo" placeholder="E-mail:">
+        <input type="text" name="username" id="nombre" placeholder="Nombre:">
+        <input type="text" name="userlastname" id="apellido" placeholder="Apellidos:">
+        <input type="number" name="age" id="edad" placeholder="Edad:">
+        <input type="number" name="course" id="curso" placeholder="Curso:">
+        <input type="number" name="score" id="punt" placeholder="Puntuación:">
+        <input type="email" name="email" id="correo" placeholder="E-mail:">
          <input type="submit" name="actualizar" value="Actualizar datos">
     </form>
-      <script src="js/comprobarActualizar.js" charset="utf-8"></script>
+      <script src="js/comprobarInsertar.js" charset="utf-8"></script>
    </div>
 
 

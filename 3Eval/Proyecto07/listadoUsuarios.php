@@ -2,6 +2,7 @@
 include "model/Db.php";
 include "model/Consulta.php";
 
+
 $consulta = new Consulta();
 
 ?>
@@ -39,12 +40,12 @@ $consulta = new Consulta();
   <?php
 
       if (isset($_POST["submit"])) {
-        $consulta->insertar();
+        $consulta->validate();
 
         }
 
       if (isset($_POST["actualizar"])) {
-        $consulta->actualizar();
+        $consulta->validate();
 
         }
 
