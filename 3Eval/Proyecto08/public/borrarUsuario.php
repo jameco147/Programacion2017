@@ -1,9 +1,9 @@
 <?php
-
 require __DIR__.'/../vendor/autoload.php';
 use Daw\models\Db;
 use Daw\models\Consulta;
 ?>
+
 <!DOCTYPE html>
 <html>
   <head>
