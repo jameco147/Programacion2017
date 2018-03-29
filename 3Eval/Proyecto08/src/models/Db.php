@@ -1,5 +1,4 @@
 <?php
-//require_once "config/config.php";
 
 namespace Daw\models;
 use mysqli;
@@ -18,11 +17,7 @@ class Db
 
   function __construct()
   {
-    //global $config;
-    //$this->server=$config["host"];
-    //$this->user=$config["user"];
-    //$this->pass=$config["pass"];
-    //$this->db=$config["db"];
+
     $this->server="localhost";
     $this->user="root";
     $this->pass="";
@@ -43,12 +38,9 @@ class Db
 
   function desconectar()
   {
-    //if ($this->conector->connect_errno) {
-      //echo "Ninguna conexion que cerrar";
-    //}else{
       mysqli_close($this->conector);
       echo "Conexión finalizada";
-  //  }
+
   }
 
     /**

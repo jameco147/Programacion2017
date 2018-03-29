@@ -1,14 +1,11 @@
 <?php
-//include "model/Db.php";
-//include "model/Consulta.php";
+
 require __DIR__.'/../vendor/autoload.php';
 use Daw\models\Db;
 use Daw\models\Consulta;
 
 $consulta = new Consulta();
 ?>
-
-
 <!DOCTYPE html>
 <html>
 
