@@ -1,6 +1,7 @@
 <?php
 
 namespace Daw\models;
+use Daw\config\config;
 use mysqli;
 
 /**
@@ -18,10 +19,10 @@ class Db
   function __construct()
   {
 
-    $this->server="localhost";
-    $this->user="root";
-    $this->pass="";
-    $this->db="juegos";
+    $this->server=config::HOST;
+    $this->user=config::USER;
+    $this->pass=config::PASS;
+    $this->db=config::DB;
 
   }
 
