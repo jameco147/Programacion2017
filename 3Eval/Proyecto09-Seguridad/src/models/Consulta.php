@@ -81,6 +81,13 @@ class Consulta
       return $cons;
   }
 
+  public function getPuntuacion()
+  {
+    $result = $this->conector->query("SELECT puntuacion FROM usuarios WHERE nombre = '$_POST[seleccion]'");
+    while ($fila = $result->fetch_assoc()) {
+      return $fila['puntuacion'];
+    }
+  }
 
 
 }

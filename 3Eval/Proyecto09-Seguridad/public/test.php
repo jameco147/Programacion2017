@@ -1,14 +1,9 @@
 <?php
-
-session_start();
-
-
 require __DIR__.'/../vendor/autoload.php';
 use Daw\models\Db;
 use Daw\models\Consulta;
 $consulta = new Consulta();
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -20,16 +15,16 @@ $consulta = new Consulta();
   </head>
   <body>
     <div class="wrap">
-      <form>
+      <form action="Ahorcadodom.php" method="post">
         <p><b>Jugar como</b>
-          <select>
+          <select name="seleccion">
             <option value="">Selecciona un usuario</option>
             <?php
                 $seleccion = $consulta->getUsuarios();
                 foreach ($seleccion as $fila) { ?>
               <option value="<?=$fila['nombre'] ?>"><?php echo $fila['nombre']?></option><?php } ?>
           </select>
-          <input type="submit" value="PLAY!">
+          <input type="submit" value="Jugar">
         </p>
       </form>
     </div>
