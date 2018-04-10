@@ -1,16 +1,16 @@
 <?php
-session_start();
-
-$_SESSION['nombre'] = $_POST['seleccion'];
-
-if ($_SESSION['nombre'] == "admin") {
-  header("Location: listadoUsuarios.php");
-}
 require __DIR__.'/../vendor/autoload.php';
 use Daw\models\Db;
 use Daw\models\Consulta;
+use Daw\models\Sesion;
 
 $puntuacion = new Consulta();
+$sesion = new Sesion;
+$_SESSION['usuario'] = $sesion->setUsuario($_POST['usuario']);
+
+if ($sesion->comprobarAdmin() == true) {
+  header("Location: listadoUsuarios.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -21,9 +21,24 @@ $puntuacion = new Consulta();
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="css/estilo.css">
   </head>
+  <style>
+    a {
+      text-align: center;
+      text-decoration: none;
+      margin: 10px 518px;
+      background: rgb(36, 60, 207);
+      color: #fff;
+      padding: 10px 20px;
+      display: list-item;
+    }
+
+    a:hover {
+      background: rgb(30, 2, 91);
+    }
+  </style>
   <body>
     <div class="wrap">
-      <h1>Bienvenido, <?php echo $_SESSION['nombre']; ?> </h1>
+      <h1>Bienvenido, <?php echo $sesion->getUsuario(); ?> </h1>
       <p>Tu puntuacion es de <?php echo $puntuacion->getPuntuacion(); ?></p>
       <form id="formulario reto" action="#" method="post">
         <b>Introduce una letra<b>
@@ -39,6 +54,7 @@ $puntuacion = new Consulta();
         <input type="text" id="resultado"   value="">
       </form>
     </div>
+    <a href="test.php">LogOut</a>
     <script src="js/Ahorcadodom.js" charset="utf-8"></script>
   </body>
 </html>

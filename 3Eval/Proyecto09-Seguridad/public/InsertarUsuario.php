@@ -1,3 +1,8 @@
+<?php
+use Daw\models\Sesion;
+
+$sesion = new Sesion;
+?>
 <!DOCTYPE html>
 <html>
   <head>

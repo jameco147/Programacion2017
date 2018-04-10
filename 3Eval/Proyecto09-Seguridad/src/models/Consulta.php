@@ -83,7 +83,7 @@ class Consulta
 
   public function getPuntuacion()
   {
-    $result = $this->conector->query("SELECT puntuacion FROM usuarios WHERE nombre = '$_POST[seleccion]'");
+    $result = $this->conector->query("SELECT puntuacion FROM usuarios WHERE nombre = '$_POST[usuario]'");
     while ($fila = $result->fetch_assoc()) {
       return $fila['puntuacion'];
     }

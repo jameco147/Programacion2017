@@ -2,7 +2,12 @@
 require __DIR__.'/../vendor/autoload.php';
 use Daw\models\Db;
 use Daw\models\Consulta;
+use Daw\models\Sesion;
+
 $consulta = new Consulta();
+$sesion = new Sesion;
+$sesion->closeSesion();
+
 ?>
 
 <!DOCTYPE html>
@@ -14,10 +19,11 @@ $consulta = new Consulta();
     <link rel="stylesheet" href="css/estilo.css">
   </head>
   <body>
+    <p><?php ($sesion->getUsuario()); ?></p>
     <div class="wrap">
       <form action="Ahorcadodom.php" method="post">
         <p><b>Jugar como</b>
-          <select name="seleccion">
+          <select name="usuario">
             <option value="">Selecciona un usuario</option>
             <?php
                 $seleccion = $consulta->getUsuarios();

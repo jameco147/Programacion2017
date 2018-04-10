@@ -2,6 +2,13 @@
 require __DIR__.'/../vendor/autoload.php';
 use Daw\models\Db;
 use Daw\models\Consulta;
+use Daw\models\Sesion;
+
+$sesion = new Sesion;
+
+if ($sesion->comprobarAdmin == false) {
+  header("Location: test.php");
+}
 ?>
 
 <!DOCTYPE html>
