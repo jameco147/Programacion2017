@@ -1,4 +1,7 @@
 <?php
+require __DIR__.'/../vendor/autoload.php';
+use Daw\models\Db;
+use Daw\models\Consulta;
 use Daw\models\Sesion;
 
 $sesion = new Sesion;
@@ -13,7 +16,7 @@ $sesion = new Sesion;
   </head>
   <body>
     <div class="wrap">
-      <form action="listadoUsuarios.php" method="post" onsubmit="return espaciosVacios()">
+      <form action="test.php" method="post" onsubmit="return espaciosVacios()">
         <h2 text align = "center">EL AHORCADO</h2><br>
 
         <input type="text" name="username" id="nombre" placeholder="Nombre:">

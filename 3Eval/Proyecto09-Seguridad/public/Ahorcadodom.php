@@ -5,12 +5,14 @@ use Daw\models\Consulta;
 use Daw\models\Sesion;
 
 $puntuacion = new Consulta();
-$sesion = new Sesion;
-$_SESSION['usuario'] = $sesion->setUsuario($_POST['usuario']);
+Sesion::start();
+Sesion::set('nombre', $_POST['usuario']);
 
-if ($sesion->comprobarAdmin() == true) {
+if (Sesion::get('nombre') == "admin") {
   header("Location: listadoUsuarios.php");
 }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -38,7 +40,7 @@ if ($sesion->comprobarAdmin() == true) {
   </style>
   <body>
     <div class="wrap">
-      <h1>Bienvenido, <?php echo $sesion->getUsuario(); ?> </h1>
+      <h1>Bienvenido, <?php echo Sesion::get('nombre'); ?> </h1>
       <p>Tu puntuacion es de <?php echo $puntuacion->getPuntuacion(); ?></p>
       <form id="formulario reto" action="#" method="post">
         <b>Introduce una letra<b>
@@ -54,7 +56,7 @@ if ($sesion->comprobarAdmin() == true) {
         <input type="text" id="resultado"   value="">
       </form>
     </div>
-    <a href="test.php">LogOut</a>
+    <a href="cerrarSesion.php">LogOut</a>
     <script src="js/Ahorcadodom.js" charset="utf-8"></script>
   </body>
 </html>

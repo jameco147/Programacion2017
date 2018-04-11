@@ -1,53 +1,43 @@
 <?php
 
 namespace Daw\models;
+
 /**
  *
  */
 class Sesion
 {
-  private $usuario;
 
   function __construct()
   {
-    if (!isset($_SESSION)) {
-      $this->initSesion();
-    }
 
   }
 
-  public function initSesion()
+  public static function start()
   {
     session_start();
   }
 
-  public function setUsuario($usuario)
+  public static function set($key, $value)
   {
-    $this->usuario=$usuario;
+    $_SESSION[$key] = $value;
   }
 
+ public static function get($key)
+ {
+   if (isset($_SESSION[$key])){
+     return $_SESSION[$key];
+   }
+ }
 
-    /**
-     * Get the value of Usuario
-     *
-     * @return mixed
-     */
-    public function getUsuario()
-    {
-        return $this->usuario;
-    }
+ public static function destroy()
+ {
+   session_unset();
+   session_destroy();
+ }
 
-    public function comprobarAdmin()
-    {
-      if ($this->usuario == "admin") {
-        return true;
-      }
-    }
-
-    public function closeSesion()
-    {
-      session_destroy();
-    }
 
 }
+
+
 ?>

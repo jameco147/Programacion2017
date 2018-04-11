@@ -4,9 +4,9 @@ use Daw\models\Db;
 use Daw\models\Consulta;
 use Daw\models\Sesion;
 
-$sesion = new Sesion;
+Sesion::start();
 
-if ($sesion->comprobarAdmin == false) {
+if (Sesion::get('nombre') != "admin") {
   header("Location: test.php");
 }
 ?>

@@ -4,8 +4,11 @@ use Daw\models\Db;
 use Daw\models\Consulta;
 use Daw\models\Sesion;
 
-$sesion = new Sesion;
+
 $consulta = new Consulta();
+Sesion::start();
+
+
 ?>
 
 <!DOCTYPE html>
@@ -17,6 +20,10 @@ $consulta = new Consulta();
     <link rel="stylesheet" href="css/estilo.css">
   </head>
   <style>
+
+    h1 {
+      text-align: center;
+    }
     p {
       font-size: 22px
     }
@@ -38,10 +45,6 @@ $consulta = new Consulta();
   <body>
     <?php
 
-        if (isset($_POST["submit"])) {
-          $consulta->validate();
-
-          }
 
         if (isset($_POST["actualizar"])) {
           $consulta->validate();
@@ -53,10 +56,10 @@ $consulta = new Consulta();
 
           }
         ?>
-
+      <h1>Bienvenido, <?php echo Sesion::get('nombre'); ?></h1>
       <div class="wrap">
         <form>
-          <p><b>Jugar como</b>
+          <p><b>Usuarios</b>
             <select>
               <option value="">Selecciona un usuario</option>
               <?php
@@ -64,7 +67,6 @@ $consulta = new Consulta();
                   foreach ($seleccion as $fila) { ?>
                 <option value="<?=$fila['nombre'] ?>"><?php echo $fila['nombre']." ". $fila['apellidos']." ".$fila['correo']; ?></option><?php } ?>
             </select>
-            <input type="submit" value="PLAY!">
           </p>
         </form>
       </div>
@@ -73,5 +75,9 @@ $consulta = new Consulta();
       <a href="borrarUsuario.php">Borrar usuario</a>
 
       <a href="InsertarUsuario.php">Registrar un nuevo usuario</a>
+
+      <br>
+
+      <a href="cerrarSesion.php">LogOut</a>
   </body>
 </html>

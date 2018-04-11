@@ -5,9 +5,10 @@ use Daw\models\Consulta;
 use Daw\models\Sesion;
 
 $consulta = new Consulta();
-$sesion = new Sesion;
-$sesion->closeSesion();
+if (isset($_POST["submit"])) {
+  $consulta->validate();
 
+  }
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +20,6 @@ $sesion->closeSesion();
     <link rel="stylesheet" href="css/estilo.css">
   </head>
   <body>
-    <p><?php ($sesion->getUsuario()); ?></p>
     <div class="wrap">
       <form action="Ahorcadodom.php" method="post">
         <p><b>Jugar como</b>
@@ -32,6 +32,7 @@ $sesion->closeSesion();
           </select>
           <input type="submit" value="Jugar">
         </p>
+        <a href="InsertarUsuario.php">Registrar nuevo usuario</a>
       </form>
     </div>
   </body>
