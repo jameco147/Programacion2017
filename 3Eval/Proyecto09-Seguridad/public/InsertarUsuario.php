@@ -4,7 +4,7 @@ use Daw\models\Db;
 use Daw\models\Consulta;
 use Daw\models\Sesion;
 
-$sesion = new Sesion;
+Sesion::start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -16,7 +16,7 @@ $sesion = new Sesion;
   </head>
   <body>
     <div class="wrap">
-      <form action="test.php" method="post" onsubmit="return espaciosVacios()">
+      <form action="Index.php" method="post" onsubmit="return espaciosVacios()">
         <h2 text align = "center">EL AHORCADO</h2><br>
 
         <input type="text" name="username" id="nombre" placeholder="Nombre:">

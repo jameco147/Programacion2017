@@ -7,5 +7,5 @@ use Daw\models\Sesion;
 
 Sesion::destroy();
 
-header("Location: test.php");
+header("Location: Index.php");
 ?>

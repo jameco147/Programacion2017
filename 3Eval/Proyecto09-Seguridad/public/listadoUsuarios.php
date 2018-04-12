@@ -8,6 +8,10 @@ use Daw\models\Sesion;
 $consulta = new Consulta();
 Sesion::start();
 
+if (Sesion::get('nombre') != "admin") {
+  header("Location: Index.php");
+}
+
 
 ?>
 
@@ -21,8 +25,13 @@ Sesion::start();
   </head>
   <style>
 
+    div{
+      text-align: center;
+    }
+
     h1 {
       text-align: center;
+      margin-top: 25px;
     }
     p {
       font-size: 22px
@@ -44,8 +53,6 @@ Sesion::start();
   </style>
   <body>
     <?php
-
-
         if (isset($_POST["actualizar"])) {
           $consulta->validate();
 
@@ -61,7 +68,7 @@ Sesion::start();
         <form>
           <p><b>Usuarios</b>
             <select>
-              <option value="">Selecciona un usuario</option>
+              <option value="">Listado de usuarios</option>
               <?php
                   $seleccion = $consulta->getUsuarios();
                   foreach ($seleccion as $fila) { ?>

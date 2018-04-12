@@ -7,7 +7,7 @@ use Daw\models\Sesion;
 Sesion::start();
 
 if (Sesion::get('nombre') != "admin") {
-  header("Location: test.php");
+  header("Location: Index.php");
 }
 ?>
 
