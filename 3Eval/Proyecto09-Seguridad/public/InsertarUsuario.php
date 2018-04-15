@@ -17,7 +17,7 @@ Sesion::start();
   <body>
     <div class="wrap">
       <form action="Index.php" method="post" onsubmit="return espaciosVacios()">
-        <h2 text align = "center">EL AHORCADO</h2><br>
+        <h2 text align = "center">REGISTRATE</h2><br>
 
         <input type="text" name="username" id="nombre" placeholder="Nombre:">
         <input type="text" name="userlastname" id="apellido" placeholder="Apellidos:">
@@ -29,5 +29,6 @@ Sesion::start();
       </form>
       <script src="js/comprobarInsertar.js" charset="utf-8"></script>
     </div>
+    <a href="listadoUsuarios.php">Volver</a>
   </body>
 </html>

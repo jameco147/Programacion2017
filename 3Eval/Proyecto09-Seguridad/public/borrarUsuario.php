@@ -19,16 +19,9 @@ if (Sesion::get('nombre') != "admin") {
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="css/estilo.css">
   </head>
-  <style>
-    p{
-      text-align: center;
-      font-size: 22px;
-      margin-top: 20px;
-    }
-  </style>
   <body>
 
-    <p>Selecciona el usuario que deseas eliminar</p>
+    <p id="user">Selecciona el usuario que deseas eliminar</p>
     <div class="wrap">
       <form action="listadoUsuarios.php" method="post">
         <select name="eliminar">
@@ -45,6 +38,7 @@ if (Sesion::get('nombre') != "admin") {
         <input type="submit" name="borrar" value="Eliminar usuario">
       </form>
     </div>
+    <a href="listadoUsuarios.php">Volver</a>
 
   </body>
 </html>

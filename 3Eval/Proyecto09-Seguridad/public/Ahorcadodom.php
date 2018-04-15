@@ -23,36 +23,21 @@ if (Sesion::get('nombre') == "admin") {
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="css/estilo.css">
   </head>
-  <style>
-    a {
-      text-align: center;
-      text-decoration: none;
-      margin: 10px 518px;
-      background: rgb(36, 60, 207);
-      color: #fff;
-      padding: 10px 20px;
-      display: list-item;
-    }
-
-    a:hover {
-      background: rgb(30, 2, 91);
-    }
-  </style>
   <body>
     <div class="wrap">
       <h1>Bienvenido, <?php echo Sesion::get('nombre'); ?> </h1>
       <p>Tu puntuacion es de <?php echo $puntuacion->getPuntuacion(); ?></p>
       <form id="formulario reto" action="#" method="post">
-        <b>Introduce una letra<b>
-        <br><br>
+        <p>Introduce una letra</p>
+        <br>
         <input type="text" id="entrada" value="">
-        <button type="button" name="button" id="button" onclick="comprobar ()" >Comprobar</button>
+        <button type="button" name="button" id="button" style="float : left;" onclick="comprobar ()" >Comprobar</button>
         <br><br>
         <input type="text" id="palabra" value="">
         <br><br>
         <h3>Intentos<h3>
+        <br>
         <input type="text" id="intentos"  value="">
-        <br><br>
         <input type="text" id="resultado"   value="">
       </form>
     </div>

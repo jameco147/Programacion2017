@@ -18,16 +18,9 @@ if (Sesion::get('nombre') != "admin") {
     <title>Actualizar usuario</title>
     <link rel="stylesheet" href="css/estilo.css">
   </head>
-  <style>
-    p{
-      text-align: center;
-      font-size: 22px;
-      margin-top: 20px;
-    }
-  </style>
   <body>
 
-    <p>Actualizar usuario</p>
+    <h1>Actualizar usuario</h1>
     <div class="wrap">
       <form action="listadoUsuarios.php" method="post" onsubmit="return espaciosVacios()">
         <select name="actu">
@@ -52,9 +45,6 @@ if (Sesion::get('nombre') != "admin") {
     </form>
       <script src="js/comprobarInsertar.js" charset="utf-8"></script>
    </div>
-
-
-
-
+   <a href="listadoUsuarios.php">Volver</a>
   </body>
 </html>

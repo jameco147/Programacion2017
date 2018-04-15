@@ -23,34 +23,6 @@ if (Sesion::get('nombre') != "admin") {
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="css/estilo.css">
   </head>
-  <style>
-
-    div{
-      text-align: center;
-    }
-
-    h1 {
-      text-align: center;
-      margin-top: 25px;
-    }
-    p {
-      font-size: 22px
-    }
-
-    a {
-      text-align: center;
-      text-decoration: none;
-      margin: 10px 518px;
-      background: rgb(36, 60, 207);
-      color: #fff;
-      padding: 10px 20px;
-      display: list-item;
-    }
-
-    a:hover {
-      background: rgb(30, 2, 91);
-    }
-  </style>
   <body>
     <?php
         if (isset($_POST["actualizar"])) {
