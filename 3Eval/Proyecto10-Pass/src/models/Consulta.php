@@ -20,9 +20,14 @@ class Consulta
   public function validate()
   {
 
-    if (empty($_POST['username']) || empty($_POST['userlastname']) || empty($_POST['age']) || empty($_POST['course']) || empty($_POST['score']) || empty($_POST['email']) ) {
+    if (empty($_POST['username']) || empty($_POST['userlastname']) || empty($_POST['age']) || empty($_POST['course']) ||
+      empty($_POST['score']) || empty($_POST['email']) || empty($_POST['password1']) || empty($_POST['password2'])) {
       echo "<br><p align = center>No dejes ningún campo vacío</p><br>";
       echo "<p align = center><a href='InsertarUsuario.php'>Por favor vuelve a resgistrarte, gracias</a></p><br><br><br>";
+    } elseif ($_POST['password1'] != $_POST['password2']) {
+      echo "<br><p align = center>Las contraseñas no coinciden</p><br>";
+      echo "<p align = center><a href='InsertarUsuario.php'>Por favor vuelve a resgistrarte, gracias</a></p><br><br><br>";
+
     } else {
       $jugador = "SELECT * FROM juegos.usuarios WHERE nombre = '$_POST[username]'";
       $comprobarJugador = $this->conector->query($jugador);
@@ -46,7 +51,9 @@ class Consulta
 
   public function insertar()
   {
-    $registro = "INSERT INTO juegos.usuarios (nombre, apellidos, edad, curso, puntuacion, correo, pass) VALUES ('$_POST[username]', '$_POST[userlastname]', '$_POST[age]','$_POST[course]', '$_POST[score]', '$_POST[email]', '$_POST[password1]')";
+    $password = hash('sha512', $_POST['password1']);
+
+    $registro = "INSERT INTO juegos.usuarios (nombre, apellidos, edad, curso, puntuacion, correo, pass) VALUES ('$_POST[username]', '$_POST[userlastname]', '$_POST[age]','$_POST[course]', '$_POST[score]', '$_POST[email]', '$password')";
     if ($this->conector->query($registro) === TRUE) {
       echo "<br><br><h1 align = center>Usuario creado correctamente</h1><br><br><br>";
     }
