@@ -9,6 +9,7 @@ if (isset($_POST["submit"])) {
   $consulta->validate();
 
   }
+
 ?>
 
 <!DOCTYPE html>
@@ -24,13 +25,10 @@ if (isset($_POST["submit"])) {
     <div class="wrap">
       <form action="Ahorcadodom.php" method="post">
         <p>Iniciar sesión como
-          <select name="usuario">
-            <option value="">Selecciona un usuario</option>
-            <?php
-                $seleccion = $consulta->getUsuarios();
-                foreach ($seleccion as $fila) { ?>
-              <option value="<?=$fila['nombre'] ?>"><?php echo $fila['nombre']?></option><?php } ?>
-          </select>
+          <br>
+          <br>
+          <input type="text" name="usuario" id="nombre" placeholder="Nombre:">
+          <input type="password" name="password1" id="pass1" placeholder="Contraseña:">
           <input type="submit" value="Jugar">
         </p>
         <br>

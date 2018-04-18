@@ -1,6 +1,7 @@
 <?php
 
 namespace Daw\models;
+use Daw\models\Sesion;
 
 /**
  *
@@ -96,6 +97,27 @@ class Consulta
     }
   }
 
+  public function login()
+  {
+    if (!empty($_POST['password1']) && !empty($_POST['usuario']) ) {
+
+      $password = $_POST['password1'];
+      $password = hash('sha512', $password);
+      //echo "SELECT nombre, pass FROM usuarios WHERE nombre = '$_POST[usuario]' AND pass = $password ";
+      $login = $this->conector->query("SELECT * FROM usuarios WHERE nombre = '$_POST[usuario]' AND pass = '$password' ");
+      if (mysqli_num_rows($login) > 0) {
+        Sesion::start();
+        Sesion::set('nombre', $_POST['usuario']);
+
+      } else {
+        header("Location: Index.php");
+      }
+
+    } else {
+      header("Location: Index.php");
+      echo "Rellena todos los campos";
+    }
+  }
 
 }
 ?>
