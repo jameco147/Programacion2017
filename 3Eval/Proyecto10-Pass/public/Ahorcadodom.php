@@ -7,8 +7,7 @@ use Daw\models\Sesion;
 $login = new Consulta();
 $login->login();
 $puntuacion = new Consulta();
-//Sesion::start();
-//Sesion::set('nombre', $_POST['usuario']);
+
 
 if (Sesion::get('nombre') == "admin") {
   header("Location: listadoUsuarios.php");

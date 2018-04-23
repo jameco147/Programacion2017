@@ -23,16 +23,17 @@ if (isset($_POST["submit"])) {
   <body>
     <h1 align="center">Bienvenido al Ahorcado</h1>
     <div class="wrap">
-      <form action="Ahorcadodom.php" method="post">
+      <form action="Ahorcadodom.php" method="post" onsubmit="return comprobarLogin()">
         <p>Iniciar sesión como
           <br>
           <br>
           <input type="text" name="usuario" id="nombre" placeholder="Nombre:">
-          <input type="password" name="password1" id="pass1" placeholder="Contraseña:">
+          <input type="password" name="password1" id="pass" placeholder="Contraseña:">
           <input type="submit" value="Jugar">
         </p>
         <br>
       </form>
+      <script src="js/login.js" charset="utf-8"></script>
     </div>
     <a href="InsertarUsuario.php">Registrar nuevo usuario</a>
   </body>
