@@ -69,8 +69,7 @@ class Consulta
       if ($this->conector->connect_errno) {
         echo "Fallo al conectar a MySQL: " .$conexion->connect_error;
       } elseif ($contar >= 1) {
-        echo "<br><p align = center>El nick ya ha sido utilizado</p><br>";
-        echo "<p align = center><a href='InsertarUsuario.php'>Por favor vuelve a resgistrarte con otro nombre</a></p><br><br><br>";
+        echo "<br><p align = center>Error: El nick ya ha sido utilizado</p><br>";
       } else {
         $actualizar = "UPDATE usuarios SET nombre = '$user', apellidos = '$lastname', edad = '$age', curso = '$course', puntuacion = '$score', correo = '$email', pass = '$pass1' WHERE nombre = '$_POST[actu]'";
          if ($this->conector->query($actualizar) === TRUE) {
@@ -100,25 +99,25 @@ class Consulta
       return $cons;
   }
 
-  public function getPuntuacion()
+  public function getPuntuacion($user)
   {
-    $result = $this->conector->query("SELECT puntuacion FROM usuarios WHERE nombre = '$_POST[usuario]'");
+    $result = $this->conector->query("SELECT puntuacion FROM usuarios WHERE nombre = '$user'");
     while ($fila = $result->fetch_assoc()) {
       return $fila['puntuacion'];
     }
   }
 
-  public function login()
+  public function login($pass, $user)
   {
-    if (!empty($_POST['password1']) && !empty($_POST['usuario']) ) {
+    if (!empty($pass) && !empty($user)) {
 
-      $password = $_POST['password1'];
+      $password = $pass;
       $password = hash('sha512', $password);
       //echo "SELECT nombre, pass FROM usuarios WHERE nombre = '$_POST[usuario]' AND pass = $password ";
-      $login = $this->conector->query("SELECT * FROM usuarios WHERE nombre = '$_POST[usuario]' AND pass = '$password' ");
+      $login = $this->conector->query("SELECT * FROM usuarios WHERE nombre = '$user' AND pass = '$password' ");
       if (mysqli_num_rows($login) > 0) {
         Sesion::start();
-        Sesion::set('nombre', $_POST['usuario']);
+        Sesion::set('nombre', $user);
 
       } else {
         header("Location: Index.php");

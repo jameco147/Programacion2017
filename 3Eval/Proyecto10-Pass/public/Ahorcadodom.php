@@ -5,7 +5,7 @@ use Daw\models\Consulta;
 use Daw\models\Sesion;
 
 $login = new Consulta();
-$login->login();
+$login->login($_POST['password1'], $_POST['usuario'] );
 $puntuacion = new Consulta();
 
 
@@ -27,7 +27,7 @@ if (Sesion::get('nombre') == "admin") {
   <body>
     <div class="wrap">
       <h1>Bienvenido, <?php echo Sesion::get('nombre'); ?> </h1>
-      <p>Tu puntuacion es de <?php echo $puntuacion->getPuntuacion(); ?></p>
+      <p>Tu puntuacion es de <?php echo $puntuacion->getPuntuacion($_POST['usuario']); ?></p>
       <form id="formulario reto" action="#" method="post">
         <p>Introduce una letra</p>
         <br>
