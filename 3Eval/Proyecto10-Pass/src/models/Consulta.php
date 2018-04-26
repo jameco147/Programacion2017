@@ -71,6 +71,7 @@ class Consulta
       } elseif ($contar >= 1) {
         echo "<br><p align = center>Error: El nick ya ha sido utilizado</p><br>";
       } else {
+        $pass1= hash('sha512', $pass1);
         $actualizar = "UPDATE usuarios SET nombre = '$user', apellidos = '$lastname', edad = '$age', curso = '$course', puntuacion = '$score', correo = '$email', pass = '$pass1' WHERE nombre = '$_POST[actu]'";
          if ($this->conector->query($actualizar) === TRUE) {
            echo "<br><br><h1 align = center>Usuario actualizado correctamente</h1><br><br><br>";
