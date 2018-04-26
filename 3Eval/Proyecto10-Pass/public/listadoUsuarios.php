@@ -26,7 +26,7 @@ if (Sesion::get('nombre') != "admin") {
   <body>
     <?php
         if (isset($_POST["actualizar"])) {
-          $consulta->validate();
+          $consulta->actualizar($_POST['username'], $_POST['userlastname'], $_POST['age'], $_POST['course'], $_POST['score'], $_POST['email'], $_POST['password1'], $_POST['password2']);
 
           }
 

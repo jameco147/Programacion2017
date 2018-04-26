@@ -18,19 +18,19 @@ class Consulta
   $this->conector=$this->db->getConector();
   }
 
-  public function validate()
+  public function insert($user, $lastname, $age, $course, $score, $email, $pass1, $pass2)
   {
-
-    if (empty($_POST['username']) || empty($_POST['userlastname']) || empty($_POST['age']) || empty($_POST['course']) ||
-      empty($_POST['score']) || empty($_POST['email']) || empty($_POST['password1']) || empty($_POST['password2'])) {
+    if (empty($user) || empty($lastname) || empty($age) || empty($course) ||
+      empty($score) || empty($email) || empty($pass1) || empty($pass2)) {
       echo "<br><p align = center>No dejes ningún campo vacío</p><br>";
       echo "<p align = center><a href='InsertarUsuario.php'>Por favor vuelve a resgistrarte, gracias</a></p><br><br><br>";
-    } elseif ($_POST['password1'] != $_POST['password2']) {
+    }
+    if ($pass1 != $pass2) {
       echo "<br><p align = center>Las contraseñas no coinciden</p><br>";
       echo "<p align = center><a href='InsertarUsuario.php'>Por favor vuelve a resgistrarte, gracias</a></p><br><br><br>";
 
     } else {
-      $jugador = "SELECT * FROM juegos.usuarios WHERE nombre = '$_POST[username]'";
+      $jugador = "SELECT * FROM juegos.usuarios WHERE nombre = '$user'";
       $comprobarJugador = $this->conector->query($jugador);
       $contar = mysqli_num_rows($comprobarJugador);
 
@@ -40,34 +40,45 @@ class Consulta
         echo "<br><p align = center>El nick ya ha sido utilizado</p><br>";
         echo "<p align = center><a href='InsertarUsuario.php'>Por favor vuelve a resgistrarte con otro nombre</a></p><br><br><br>";
       } else {
-        if (!empty($_POST["actu"])) {
-          $this->actualizar();
-        } else {
-          $this->insertar();
+        $pass1= hash('sha512', $pass1);
+
+        $registro = "INSERT INTO juegos.usuarios (nombre, apellidos, edad, curso, puntuacion, correo, pass) VALUES ('$user', '$lastname', '$age', '$course', '$score', '$email', '$pass1')";
+        if ($this->conector->query($registro) === TRUE) {
+          echo "<br><br><h1 align = center>Usuario creado correctamente</h1><br><br><br>";
         }
       }
-
     }
   }
 
-  public function insertar()
+  public function actualizar($user, $lastname, $age, $course, $score, $email, $pass1, $pass2)
   {
-    $password = hash('sha512', $_POST['password1']);
-
-    $registro = "INSERT INTO juegos.usuarios (nombre, apellidos, edad, curso, puntuacion, correo, pass) VALUES ('$_POST[username]', '$_POST[userlastname]', '$_POST[age]','$_POST[course]', '$_POST[score]', '$_POST[email]', '$password')";
-    if ($this->conector->query($registro) === TRUE) {
-      echo "<br><br><h1 align = center>Usuario creado correctamente</h1><br><br><br>";
+    if (empty($user) || empty($lastname) || empty($age) || empty($course) ||
+      empty($score) || empty($email) || empty($pass1) || empty($pass2)) {
+      echo "<br><p align = center>No dejes ningún campo vacío</p><br>";
+      echo "<p align = center><a href='InsertarUsuario.php'>Por favor vuelve a resgistrarte, gracias</a></p><br><br><br>";
     }
-  }
+    if ($pass1 != $pass2) {
+      echo "<br><p align = center>Las contraseñas no coinciden</p><br>";
+      echo "<p align = center><a href='InsertarUsuario.php'>Por favor vuelve a resgistrarte, gracias</a></p><br><br><br>";
 
+    } else {
+      $jugador = "SELECT * FROM juegos.usuarios WHERE nombre = '$user'";
+      $comprobarJugador = $this->conector->query($jugador);
+      $contar = mysqli_num_rows($comprobarJugador);
 
-  public function actualizar()
-  {
-      $actualizar = "UPDATE usuarios SET nombre = '$_POST[username]', apellidos = '$_POST[userlastname]', edad = '$_POST[age]', curso = '$_POST[course]', puntuacion = '$_POST[score]', correo = '$_POST[email]' WHERE nombre = '$_POST[actu]'";
-      if ($this->conector->query($actualizar) === TRUE) {
-        echo "<br><br><h1 align = center>Usuario actualizado correctamente</h1><br><br><br>";
+      if ($this->conector->connect_errno) {
+        echo "Fallo al conectar a MySQL: " .$conexion->connect_error;
+      } elseif ($contar >= 1) {
+        echo "<br><p align = center>El nick ya ha sido utilizado</p><br>";
+        echo "<p align = center><a href='InsertarUsuario.php'>Por favor vuelve a resgistrarte con otro nombre</a></p><br><br><br>";
+      } else {
+        $actualizar = "UPDATE usuarios SET nombre = '$user', apellidos = '$lastname', edad = '$age', curso = '$course', puntuacion = '$score', correo = '$email', pass = '$pass1' WHERE nombre = '$_POST[actu]'";
+         if ($this->conector->query($actualizar) === TRUE) {
+           echo "<br><br><h1 align = center>Usuario actualizado correctamente</h1><br><br><br>";
       }
+    }
   }
+}
 
 
   public function borrar()

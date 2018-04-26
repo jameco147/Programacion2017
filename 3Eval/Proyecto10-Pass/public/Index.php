@@ -6,7 +6,7 @@ use Daw\models\Sesion;
 
 $consulta = new Consulta();
 if (isset($_POST["submit"])) {
-  $consulta->validate();
+  $consulta->insert($_POST['username'], $_POST['userlastname'], $_POST['age'], $_POST['course'], $_POST['score'], $_POST['email'], $_POST['password1'], $_POST['password2']);
 
   }
 

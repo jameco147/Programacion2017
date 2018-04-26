@@ -41,7 +41,9 @@ if (Sesion::get('nombre') != "admin") {
         <input type="number" name="course" id="curso" placeholder="Curso:">
         <input type="number" name="score" id="punt" placeholder="Puntuación:">
         <input type="email" name="email" id="correo" placeholder="E-mail:">
-         <input type="submit" name="actualizar" value="Actualizar datos">
+        <input type="password" name="password1" id="pass1" placeholder="Contraseña:">
+        <input type="password" name="password2" id="pass2" placeholder="Repite la contraseña:">
+        <input type="submit" name="actualizar" value="Actualizar datos">
     </form>
       <script src="js/comprobarInsertar.js" charset="utf-8"></script>
    </div>
