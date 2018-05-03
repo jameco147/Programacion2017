@@ -13,40 +13,21 @@ $consulta = new Consulta();
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="css/estilo.css">
   </head>
-  <style>
-    p {
-      font-size: 22px
-    }
-
-    a {
-      text-align: center;
-      text-decoration: none;
-      margin: 10px 518px;
-      background: rgb(36, 60, 207);
-      color: #fff;
-      padding: 10px 20px;
-      display: list-item;
-    }
-
-    a:hover {
-      background: rgb(30, 2, 91);
-    }
-  </style>
   <body>
     <?php
 
         if (isset($_POST["submit"])) {
-          $consulta->validate();
+          $consulta->insert($_POST['username'], $_POST['userlastname'], $_POST['age'], $_POST['course'], $_POST['score'], $_POST['email']);
 
           }
 
         if (isset($_POST["actualizar"])) {
-          $consulta->validate();
+          $consulta->actualizar($_POST['username'], $_POST['userlastname'], $_POST['age'], $_POST['course'], $_POST['score'], $_POST['email']);
 
           }
 
         if (isset($_POST["borrar"])) {
-          $consulta->borrar();
+          $consulta->borrar($_POST['eliminar']);
 
           }
         ?>
