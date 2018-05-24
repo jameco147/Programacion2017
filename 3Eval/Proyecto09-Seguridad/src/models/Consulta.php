@@ -17,14 +17,14 @@ class Consulta
   $this->conector=$this->db->getConector();
   }
 
-  public function validate()
+  public function validate($user, $lastname, $age, $course, $score, $email)
   {
 
-    if (empty($_POST['username']) || empty($_POST['userlastname']) || empty($_POST['age']) || empty($_POST['course']) || empty($_POST['score']) || empty($_POST['email']) ) {
+    if (empty($user) || empty($lastname) || empty($age) || empty($course) || empty($score) || empty($email) ) {
       echo "<br><p align = center>No dejes ningún campo vacío</p><br>";
       echo "<p align = center><a href='InsertarUsuario.php'>Por favor vuelve a resgistrarte, gracias</a></p><br><br><br>";
     } else {
-      $jugador = "SELECT * FROM juegos.usuarios WHERE nombre = '$_POST[username]'";
+      $jugador = "SELECT * FROM juegos.usuarios WHERE nombre = '$user'";
       $comprobarJugador = $this->conector->query($jugador);
       $contar = mysqli_num_rows($comprobarJugador);
 
@@ -35,7 +35,7 @@ class Consulta
         echo "<p align = center><a href='InsertarUsuario.php'>Por favor vuelve a resgistrarte con otro nombre</a></p><br><br><br>";
       } else {
         if (!empty($_POST["actu"])) {
-          $this->actualizar();
+          $this->actualizar($user, $lastname, $age, $course, $score, $email);
         } else {
           $this->insertar();
         }
@@ -53,9 +53,9 @@ class Consulta
   }
 
 
-  public function actualizar()
+  public function actualizar($user, $lastname, $age, $course, $score, $email)
   {
-      $actualizar = "UPDATE usuarios SET nombre = '$_POST[username]', apellidos = '$_POST[userlastname]', edad = '$_POST[age]', curso = '$_POST[course]', puntuacion = '$_POST[score]', correo = '$_POST[email]' WHERE nombre = '$_POST[actu]'";
+      $actualizar = "UPDATE usuarios SET nombre = '$user', apellidos = '$lastname', edad = '$age', curso = '$course', puntuacion = '$score', correo = '$email' WHERE nombre = '$_POST[actu]'";
       if ($this->conector->query($actualizar) === TRUE) {
         echo "<br><br><h1 align = center>Usuario actualizado correctamente</h1><br><br><br>";
       }
